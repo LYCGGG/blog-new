@@ -128,6 +128,26 @@ Astro Content Collections 怎么定义 schema？use context7
 >
 > 如果需要在 `env` 中配置 PATH，Windows 路径的 `\` 在 JSON 里必须转义为 `\\`，否则会导致整个 mcp.json 解析失败，所有 MCP 服务器都会消失。实际上如果 Python 已在系统 PATH 中，不需要额外配置 env。
 
+### Discord MCP
+
+[mcp-discord](https://www.npmjs.com/package/mcp-discord) 让 AI 直接操作 Discord 服务器：发消息、读消息、管理频道、论坛帖子、Webhook 等。适合做部署通知、错误告警、社区管理。
+
+```json
+{
+  "discord": {
+    "command": "npx",
+    "args": ["-y", "mcp-discord", "--config", "你的Bot_Token"],
+    "env": {}
+  }
+}
+```
+
+Token 通过 `--config` 参数传入。需要先在 [Discord Developer Portal](https://discord.com/developers/applications) 创建 Bot 并邀请到服务器。
+
+> ⚠️ npm 上还有一个 `discord-mcp` 包，注意区分。那个包需要 User Token（违反 Discord ToS），Bot Token 会报 401。推荐用 `mcp-discord`。
+
+详细配置过程见 [在 Kiro 中接入 Discord MCP](/blog/discord-mcp-setup)。
+
 ## 值得关注的其他 MCP
 
 除了我在用的，以下这些也值得根据需求选装：
