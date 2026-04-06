@@ -83,25 +83,50 @@ Astro Content Collections 怎么定义 schema？use context7
 
 > Notion 也推出了远程版 MCP（通过 OAuth 认证），不需要手动配 token，但本地版目前功能更完整。
 
-### Markdownify
+### MarkItDown
 
-[markdownify-mcp](https://github.com/zcaceres/markdownify-mcp) 是万能格式转 Markdown 工具，支持：
+[markitdown-mcp-npx](https://github.com/xkiranj/markitdown-mcp-npx) 是基于微软 MarkItDown 库的万能格式转 Markdown 工具，支持：
 
 - PDF、DOCX、XLSX、PPTX
 - 图片（带元数据）、音频（带转录）
 - 网页、YouTube 视频字幕
 
-对于需要把各种文档喂给 AI 处理的场景非常好用。
-
 ```json
 {
-  "markdownify": {
+  "markitdown": {
     "command": "npx",
-    "args": ["-y", "markdownify-mcp@latest"],
+    "args": ["-y", "markitdown-mcp-npx"],
     "env": {}
   }
 }
 ```
+
+> ⚠️ 这个 MCP 踩坑较多，记录如下：
+>
+> **前置依赖：Python 3.10+**
+>
+> 虽然用 npx 启动，但底层是 Python 库。启动时会自动在临时目录创建虚拟环境并安装依赖（约 100MB+）。没有 Python 会直接报错。
+>
+> Windows 安装 Python：`winget install Python.Python.3.13`
+>
+> **首次启动超时**
+>
+> 首次运行需要下载大量 Python 依赖，耗时较长。Kiro 对 MCP 服务器启动有超时限制，很可能在依赖装完之前就断开连接，显示 `Connection Failed`。
+>
+> 解决办法：先在终端手动跑一次 `npx -y markitdown-mcp-npx --help`，等依赖全部安装完成后，再在 Kiro MCP 面板点 Retry。后续启动就是秒连。
+>
+> **虚拟环境损坏**
+>
+> 如果首次安装中途被打断（超时、关闭终端等），会留下不完整的虚拟环境，再次启动时报权限错误 `Permission denied: python.exe`。
+>
+> 解决办法：删除临时目录后重试：
+> ```powershell
+> Remove-Item -Recurse -Force "$env:TEMP\markitdown-mcp-npx"
+> ```
+>
+> **JSON 中 Windows 路径的反斜杠**
+>
+> 如果需要在 `env` 中配置 PATH，Windows 路径的 `\` 在 JSON 里必须转义为 `\\`，否则会导致整个 mcp.json 解析失败，所有 MCP 服务器都会消失。实际上如果 Python 已在系统 PATH 中，不需要额外配置 env。
 
 ## 值得关注的其他 MCP
 
