@@ -1,7 +1,7 @@
 ---
 title: "在 Kiro 中接入 Discord MCP，让 AI 管理你的 Discord 服务器"
 description: "记录在 Kiro 中配置 Discord MCP 的完整过程：从创建 Bot、配置权限到最终连接成功，包括 discord-mcp 包 401 认证失败的踩坑和切换 mcp-discord 的解决方案。"
-date: "2026-04-06"
+date: "2026-04-06T22:50:00"
 tags: ["技术"]
 ---
 

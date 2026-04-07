@@ -1,7 +1,7 @@
 ---
 title: "用 Kiro + Astro 重建我的个人博客"
 description: "记录从 Hexo 迁移到 Astro Nano 的完整过程，包括 GitHub MCP 配置、主题选择、文章迁移和个性化改造。"
-date: "2026-04-06"
+date: "2026-04-06T02:13:00"
 tags: ["技术"]
 ---
 

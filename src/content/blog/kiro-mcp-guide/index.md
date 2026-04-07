@@ -1,7 +1,7 @@
 ---
 title: "好用的 MCP 推荐与配置指南"
 description: "面向开发者的 MCP 服务器推荐与配置指南，涵盖 GitHub、Context7、Notion、Markdownify 等实用 MCP，附完整配置示例。"
-date: "2026-04-06"
+date: "2026-04-06T12:47:00"
 tags: ["技术"]
 ---
 

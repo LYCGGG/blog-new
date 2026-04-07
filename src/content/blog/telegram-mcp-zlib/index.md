@@ -1,7 +1,7 @@
 ---
 title: "用 Kiro 接入 Telegram MTProto MCP，实现自动搜书"
 description: "记录在 Kiro 中接入 Telegram MCP 的完整过程：从 Bot API 的失败尝试，到 MTProto 方案的最终实现，包括登录、代理、sendMessage 工具扩展等踩坑细节。"
-date: "2026-04-06"
+date: "2026-04-06T20:12:00"
 tags: ["技术"]
 ---
 

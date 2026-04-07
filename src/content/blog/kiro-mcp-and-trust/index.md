@@ -1,7 +1,7 @@
 ---
 title: "别再点 Trust 了——Kiro 命令自动执行配置指南"
 description: "通过配置 Kiro 的 Trusted Commands 和 Command Denylist，实现命令自动执行，同时用黑名单机制兜底系统安全。"
-date: "2026-04-06"
+date: "2026-04-06T12:38:00"
 tags: ["技术"]
 ---
 
