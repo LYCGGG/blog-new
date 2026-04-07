@@ -81,7 +81,10 @@ const projects = (await getCollection("projects"))
           {SOCIALS.map(SOCIAL => (
             <li class="flex gap-x-2 text-nowrap">
               <Link href={SOCIAL.HREF} external aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}>
-                {SOCIAL.NAME}
+                <span class="flex items-center gap-x-1">
+                  <Fragment set:html={SOCIAL.ICON} />
+                  {SOCIAL.NAME}
+                </span>
               </Link>
               {"/"}
             </li>
