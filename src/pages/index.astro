@@ -78,7 +78,7 @@ const projects = (await getCollection("projects"))
           </p>
         </article>
         <ul class="flex flex-wrap gap-2">
-          {SOCIALS.map(SOCIAL => (
+          {SOCIALS.map((SOCIAL, i) => (
             <li class="flex gap-x-2 text-nowrap">
               <Link href={SOCIAL.HREF} external aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}>
                 <span class="flex items-center gap-x-1">
@@ -86,17 +86,9 @@ const projects = (await getCollection("projects"))
                   {SOCIAL.NAME}
                 </span>
               </Link>
-              {"/"}
+              {i < SOCIALS.length - 1 && "/"}
             </li>
           ))}
-          <li class="line-clamp-1">
-            <Link href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.NAME}`}>
-              <span class="flex items-center gap-x-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                {SITE.EMAIL}
-              </span>
-            </Link>
-          </li>
         </ul>
       </section>
     </div>
