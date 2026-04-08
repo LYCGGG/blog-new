@@ -19,14 +19,20 @@ body {
 body {
   @apply font-sans antialiased;
   @apply flex flex-col;
-  @apply bg-stone-100 dark:bg-stone-900;
-  @apply text-black/50 dark:text-white/75;
+  @apply bg-white dark:bg-neutral-950;
+  @apply text-warm-dark dark:text-neutral-400;
+  letter-spacing: 0.16px;
 }
 
 header {
   @apply fixed top-0 left-0 right-0 z-50 py-5;
-  @apply bg-stone-100/75 dark:bg-stone-900/25;
-  @apply backdrop-blur-sm saturate-200;
+  @apply bg-white/80 dark:bg-neutral-950/80;
+  @apply backdrop-blur-sm;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+html.dark header {
+  border-bottom-color: rgba(255,255,255,0.06);
 }
 
 main {
@@ -35,24 +41,56 @@ main {
 
 footer {
   @apply py-5 text-sm;
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+html.dark footer {
+  border-top-color: rgba(255,255,255,0.06);
 }
 
 article {
   @apply max-w-full prose dark:prose-invert prose-img:mx-auto prose-img:my-auto;
-  @apply prose-headings:font-semibold prose-p:font-serif;
-  @apply prose-headings:text-black prose-headings:dark:text-white;
+  @apply prose-headings:font-light prose-p:font-serif;
+  @apply prose-headings:text-black dark:prose-headings:text-neutral-100;
+}
+
+/* ElevenLabs signature: light-weight headings */
+article h1, article h2, article h3 {
+  font-weight: 300;
+  letter-spacing: -0.5px;
 }
 
 @layer utilities {
   article a {
-    @apply font-sans text-current underline underline-offset-2;
-    @apply decoration-black/15 dark:decoration-white/30;
+    @apply font-sans text-black dark:text-neutral-200 underline underline-offset-2;
+    text-decoration-color: rgba(119, 113, 105, 0.4);
     @apply transition-colors duration-300 ease-in-out;
   }
   article a:hover {
-    @apply text-black dark:text-white;
-    @apply decoration-black/25 dark:decoration-white/50;
+    text-decoration-color: rgba(0, 0, 0, 0.6);
   }
+  html.dark article a:hover {
+    text-decoration-color: rgba(255, 255, 255, 0.5);
+  }
+}
+
+/* ElevenLabs warm card */
+.el-card {
+  @apply bg-white dark:bg-neutral-900;
+  @apply rounded-2xl;
+  @apply shadow-el-card dark:shadow-el-card-dark;
+  @apply transition-shadow duration-300 ease-in-out;
+}
+.el-card:hover {
+  @apply shadow-el-card-hover dark:shadow-el-card-dark-hover;
+}
+
+/* Warm stone surface */
+.warm-surface {
+  background: rgba(245, 242, 239, 0.8);
+}
+html.dark .warm-surface {
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .animate {
